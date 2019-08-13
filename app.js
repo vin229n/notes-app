@@ -9,27 +9,40 @@ yargs.version('1.1.0')
 
 //Create add command
 yargs.command({
-    'command': 'add',
-    'describe': 'Add a new note',
-    'handler': function (){
-        console.log("adding a new note!")
+    command: 'add',
+    describe: 'Add a new note',
+    builder: {
+        title:{
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string'
+        },
+        body:{
+            describe: 'Note Body',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function (argv){
+        console.log("Title: "+argv.title)
+        console.log("Body: "+argv.body)
     }
 })
 
 //create remove command
 yargs.command({
-    'command': 'add',
-    'describe': 'Remove a new note',
-    'handler': function (){
+    command: 'remove',
+    describe: 'Remove a new note',
+    handler: function (){
         console.log("Removing the note!")
     }
 })
 
 //create list command
 yargs.command({
-    'command': 'list',
-    'describe': 'List your notes',
-    'handler': function (){
+    command: 'list',
+    describe: 'List your notes',
+    handler: function (){
         console.log("Listing out all notes")
     }
 })
